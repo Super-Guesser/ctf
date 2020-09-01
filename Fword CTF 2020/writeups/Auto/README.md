@@ -18,7 +18,7 @@ Each file in 7z compressed file internal codes just like this.
       LODWORD(v11) = sub_10C0(v12);
 ```
 
-sub_10F0 is just for sprintf function, this code generates the name of next file of this current executed binary, and there is almost same codes in 400 binaries.  
+sub_10F0 is just for sprintf function, this code generates the name of next file of this current executed binary, and there are almost same codes in 400 binaries.  
 Thus, if we can extract the calculated variables of each files, such as 406. 1. 331. 02. 6880 based on above code snippets.  
 We can calculate the password key which used for executing next corrected binaries without angr framework.  
 
