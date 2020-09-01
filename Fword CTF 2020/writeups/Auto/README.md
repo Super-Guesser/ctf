@@ -2,7 +2,7 @@
 
 ## Analysis
 This compressed 7z file consists of more than hundreds files, there are 400 binaries in file.  
-Each file in 7z compressed file's internal codes just like this.  
+Each file in 7z compressed file internal codes just like this.  
 
 ```c
     v9 = 10 * (v5[v8 - 2] - 48) + v7;
