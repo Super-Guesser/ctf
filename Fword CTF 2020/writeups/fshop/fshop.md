@@ -2,11 +2,11 @@
 
 16 solves
 
-I believe that this challenge would've had way more less solevs without the unintended solution.
+I believe that this challenge would've had way more less solves without the unintended solution.
 
 Before I start, sorry for not having the pictures of the actual application. The server of the challenge is currently not active.
 
-# funcionalities of the application
+# Flow of the application
 
 The challenge was written in php and the following 2 files were the ones needed to understand to solve the challenge
 ```
@@ -86,7 +86,7 @@ itmes.php
 Items.php showed all of the items that you have chose in buy.php.
 
 It first get's all of the rows from user_items with your user_id.
-It then gets the serialized object that was made from buy.php and replaces \0\0\0 with * surrounded with null bytes and unserliazes that then print them out.
+It then gets the serialized object that was made from buy.php and replaces \0\0\0 with * surrounded with null bytes and unserialises that then print them out.
 
 # vulnerability
 
@@ -120,19 +120,19 @@ filtered_serialized_product : O:5:"Order":3:{s:12:"\0\0\0_quantity";s:30:"\0\0\0
 then go into the db
 ```
 
-and then when it converts \0\0\0 back to * in items.php it will change to 
+and then when it converts \0\0\0 back to \* in items.php it will change to 
 
 ```
 serializedObject : O:5:"Order":3:{s:12:"*_quantity";s:30:"*****";s:8:"*_size";s:1:"s";s:11:"_product_id";s:1:"3";}
 ```
 
-Pay attention to the string length where it says s:30. It gave the value of s:30 because it counts all characters in \0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 but when it converts it back to chr(0)."*".chr(0) it is still in s:30 but the actual character length is 15(you need to also count the null bytes so 10 null bytes + 5 "*" is 15). This means that we have 15 more characters that we can control. So when the above seralized object gets unsrialized, it will occur an error.
+Pay attention to the string length where it says s:30. It gave the value of s:30 because it counts all characters in \0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 but when it converts it back to chr(0)."\*".chr(0) it is still in s:30 but the actual character length is 15(you need to also count the null bytes so 10 null bytes + 5 "\*" is 15). This means that we have 15 more characters that we can control. So when the above serealized object gets unserialized, it will occur an error.
 
 # Exploit
 
 So the attack flow is
 1. overflow _quantity and overwrite _size
-2. create and put the serialized object that contains _size and _product_id(containg the sql injection) into _size
+2. create and put the serialized object that contains _size and _product_id(containing the sql injection) into _size
 
 Let's say we want to inject 'UNION SELECT null,null,null,null,null,null,null-- -
 
