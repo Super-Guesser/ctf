@@ -72,7 +72,7 @@ We could achieve this by providing following payload as `balance`.
 
  `0,""),(2122424354,"OUR USERID",1333,(select api_key from general where username="bob_h4x0r" )); -- -`
 
-After executing the query, we could see new wallet with admin's apikey as note. After logging in with admin's apikey, we got the FLAG.
+After executing the query with SSRF, we could see new wallet with admin's apikey as note. After logging in with admin's apikey, we got the FLAG.
 
 >FLAG :ALLES{th4nks f0r y0uR h31p, my fr13nd!}
 
