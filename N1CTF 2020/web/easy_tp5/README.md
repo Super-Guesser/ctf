@@ -1,6 +1,6 @@
 # Easy_TP5
 
-A web challenge with thingphp framework ended up having 11 solves
+A web challenge with thinkphp framework ended up having 11 solves
 
 ## Solution
 
