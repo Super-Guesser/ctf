@@ -16,7 +16,7 @@ view-source:http://35.194.175.80:8000/query?site=file:///etc/passwd
 
 <img src="https://user-images.githubusercontent.com/7364615/99298929-c7d13680-284a-11eb-8d4b-23d495400e72.png" alt="etc_passwd" style="zoom: 67%;" />
 
-So its **SSRF** ( Server-side request forgery ), if we send `file:///proc/self/cmdline` we get the command line which include python file name `main-dc1e2f5f7a4f359bb5ce1317a`.py
+So its **SSRF** ( Server-side request forgery ), if we send `file:///proc/self/cmdline` we get the command line which include python file name `main-dc1e2f5f7a4f359bb5ce1317a.py`
 
 ```
 /usr/local/bin/python/usr/local/bin/gunicorn main-dc1e2f5f7a4f359bb5ce1317a:app--bind0.0.0.0:8000--workers5--worker-tmp-dir/dev/shm--worker-classgevent--access-logfile---error-logfile-
