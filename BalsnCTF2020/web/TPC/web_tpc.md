@@ -6,7 +6,7 @@ by TnMch
 
 By checking the url givng `http://35.194.175.80:8000/` we found a printed text that mentions the entry point for this challenge
 
-
+<img style="zoom: 40%;" src="https://user-images.githubusercontent.com/7364615/99299251-40d08e00-284b-11eb-819a-09db889acbb9.png" alt="main" >
 
 sending `file:///etc/passwd` as a **site** argument gives us the content for  `/etc/passwd`
 
