@@ -6,8 +6,6 @@ by TnMch
 
 By checking the url givng `http://35.194.175.80:8000/` we found a printed text that mentions the entry point for this challenge
 
-<img src="https://user-images.githubusercontent.com/7364615/99298929-c7d13680-284a-11eb-8d4b-23d495400e72.png" alt="etc_passwd" style="zoom: 67%;" />
-
 
 
 sending `file:///etc/passwd` as a **site** argument gives us the content for  `/etc/passwd`
@@ -16,7 +14,7 @@ sending `file:///etc/passwd` as a **site** argument gives us the content for  `/
 view-source:http://35.194.175.80:8000/query?site=file:///etc/passwd
 ```
 
-![Screenshot 2020-11-16 at 20.07.28](/Users/tnmch/Desktop/Screenshot 2020-11-16 at 20.07.28.png)
+<img src="https://user-images.githubusercontent.com/7364615/99298929-c7d13680-284a-11eb-8d4b-23d495400e72.png" alt="etc_passwd" style="zoom: 67%;" />
 
 So its **SSRF** ( Server-side request forgery ), if we send `file:///proc/self/cmdline` we get the command line which include python file name `main-dc1e2f5f7a4f359bb5ce1317a`.py
 
