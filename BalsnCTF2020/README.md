@@ -37,6 +37,6 @@
 
 
 
-### cypto
+### crypto
 
 - Happy farm - https://github.com/Super-Guesser/ctf/tree/master/BalsnCTF2020/crypto/happy%20farm
