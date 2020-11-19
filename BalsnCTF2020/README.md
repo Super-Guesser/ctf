@@ -1,6 +1,6 @@
 ## Balsn CTF 2020 Write ups
 
-**Team:  Super⚔️Blue (Super Gueser ⚔️ Perfect Blue)**
+**Team:  Super⚔️Blue (Super Guesser ⚔️ Perfect Blue)**
 
 ### rev
 
