@@ -28,7 +28,7 @@ for j in range(key_len):
         if printable > max_printable:
             key = k
             max_printable = printable
-            for i in range(j, ct_len, key_len):
-                pt[i] = gf2(ord(ct[i]), k)
+    for i in range(j, ct_len, key_len):
+        pt[i] = gf2(ord(ct[i]), key)
 
 print(re.findall(r'pbctf{.*}', pt)[0])
