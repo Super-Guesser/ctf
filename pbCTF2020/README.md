@@ -8,6 +8,7 @@
 ### misc
 
 ### web
+- Ikea Name Generator  https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/ikea-name-generator
 
 ### crypto
 - Strong Cipher - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/crypto/strong_cipher
