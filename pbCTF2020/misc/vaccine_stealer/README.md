@@ -40,9 +40,9 @@ Deobfuscating the first excerpt, we came to the following command, which clearly
 cmd.exe /c C:\ProgramData\ntuser.pol TCP 172.30.1.0/24 3389512 /Banner
 ```
 
-So, now, only thing which is missing from the "puzzle" is the answer to the question: `Filename of the executable that ran (1)`. This one was slightly tricky to find because A) this information is not available through standard `volatility` runs as that same executable was not running during the memory snapshot; and B) there is no standard `volatility` plugin to get the list of executables being run at OS startup.
+So, now, only thing which is missing from the "puzzle" is the answer to the question: `(2): Filename of the executable that ran (1)`. This one was slightly tricky to find because A) this information is not available through standard `volatility` runs as that same executable was not running during the memory snapshot; and B) there is no standard `volatility` plugin to get the list of executables being run at OS startup.
 
-Nevertheless, while later found that I could (easier) do the 3rd party plugin [volatility-autoruns](https://github.com/tomchop/volatility-autoruns), based the "last yard" on manually finding suspicious executable names got by inspecting `strings` and `strings -el` run results. The most promising was the following *Task Scheduler XML* entry (Note: **Found by `grep`-ing for folder `C:\ProgramData` used in case of `ntuser.pol`**):
+Nevertheless, while later found that I could (easier) do the 3rd party plugin [volatility-autoruns](https://github.com/tomchop/volatility-autoruns), based the "last yard" on manually finding suspicious executable names got by inspecting `strings` and `strings -el` run results. The most promising was the following *Task Scheduler XML* entry, found by `grep`-ing for folder `C:\ProgramData` used in case of `ntuser.pol`, running the executable `C:\ProgramData\WindowsPolicyUpdate.cmd` (Note: **Answers the Question (2)**):
 
 ```xml
 <Task>
