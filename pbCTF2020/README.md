@@ -9,3 +9,4 @@
 ### web
 
 ### crypto
+- Strong Cipher - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/crypto/strong_cipher
