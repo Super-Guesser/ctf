@@ -4,6 +4,7 @@ http://ikea-name-generator.chal.perfect.blue/
 
 By: corb3nik
 
+---
 
 1.Break JSON Syntax by adding a new line (%0a) to make CONFIG undefined
 `http://ikea-name-generator.chal.perfect.blue/?name=renwa%0a`
