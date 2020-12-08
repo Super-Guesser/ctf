@@ -1,19 +1,17 @@
 ## pbCTF 2020 Write ups
 
-### rev
-
 ### pwn
 - Jheap - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/pwn/jheap
 - Pwnception - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/pwn/pwnception
 - Amazing ROP - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/pwn/Amazing-ROP
 
+### rev
+- RGNN - https://github.com/Super-Guesser/ctf/blob/master/pbCTF2020/rev/rgnn/README.md
+
 ### misc
 - Vaccine Stealer - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/misc/vaccine_stealer
 - Not Stego - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/misc/not_stego
 - Find rbtree - https://rkm0959.tistory.com/174
-
-### rev
-- RGNN - https://github.com/Super-Guesser/ctf/blob/master/pbCTF2020/rev/rgnn/README.md
 
 ### web
 - Ikea Name Generator  https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/ikea-name-generator
