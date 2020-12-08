@@ -12,6 +12,9 @@
 - Not Stego - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/misc/not_stego
 - Find rbtree - https://rkm0959.tistory.com/174
 
+### rev
+- RGNN - https://github.com/Super-Guesser/ctf/blob/master/pbCTF2020/rev/rgnn/README.md
+
 ### web
 - Ikea Name Generator  https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/ikea-name-generator
 
