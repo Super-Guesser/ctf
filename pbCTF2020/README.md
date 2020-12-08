@@ -12,6 +12,7 @@
 - Vaccine Stealer - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/misc/vaccine_stealer
 - Not Stego - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/misc/not_stego
 - Find rbtree - https://rkm0959.tistory.com/174
+- Gcombo - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/misc/gcombo
 
 ### web
 - Ikea Name Generator - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/ikea-name-generator
