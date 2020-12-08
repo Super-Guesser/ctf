@@ -9,7 +9,7 @@ nc maze.chal.perfect.blue 1
 By: theKidOfArcrania
 ```
 
-[bof.c]([ bof.c (storage.googleapis.com)](https://storage.googleapis.com/pbctf-2020-ctfd/8e94e6f057143f9eba46a581a94a69b0/bof.c)) [bof.bin]([ bof.bin (storage.googleapis.com)](https://storage.googleapis.com/pbctf-2020-ctfd/b315ab20c9c4608a9172d80bd3dcf4e1/bof.bin))
+[bof.c](https://storage.googleapis.com/pbctf-2020-ctfd/8e94e6f057143f9eba46a581a94a69b0/bof.c) [bof.bin](https://storage.googleapis.com/pbctf-2020-ctfd/b315ab20c9c4608a9172d80bd3dcf4e1/bof.bin)
 
 `nc maze.chal.perfect.blue 1`
 
