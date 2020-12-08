@@ -1,4 +1,4 @@
-#!/usr/python2
+#!/usr/bin/python2
 from collections import defaultdict
 from parsed import z
 
