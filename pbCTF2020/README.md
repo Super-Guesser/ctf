@@ -14,7 +14,11 @@
 - Find rbtree - https://rkm0959.tistory.com/174
 
 ### web
-- Ikea Name Generator  https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/ikea-name-generator
+- Ikea Name Generator - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/ikea-name-generator
+- XSP - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/XSP
+- Apoche I - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/apoche1
+- Simple Note - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/simple_note
+- Sploosh - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/web/sploosh
 
 ### crypto
 - Strong Cipher - https://github.com/Super-Guesser/ctf/tree/master/pbCTF2020/crypto/strong_cipher
