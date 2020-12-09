@@ -39,4 +39,4 @@
 
 ### crypto
 
-- Happy farm - [crypto/happy%20farm](crypto/happy farm)
+- Happy farm - [crypto/happy farm](crypto/happy%20farm)
