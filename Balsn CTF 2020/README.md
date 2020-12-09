@@ -19,24 +19,24 @@
 
 - Election - https://github.com/perfectblue/ctf-writeups/tree/master/2020/BalsnCTF/election
 - IdleGame - https://github.com/perfectblue/ctf-writeups/tree/master/2020/BalsnCTF/IdleGame
-- Bitcoin - https://github.com/Super-Guesser/ctf/tree/master/BalsnCTF2020/misc/bitcoin
-- Transformer - https://github.com/Super-Guesser/ctf/tree/master/BalsnCTF2020/misc/transformer
-- misc-show-your-patience-1 - https://github.com/Super-Guesser/ctf/tree/master/BalsnCTF2020/misc/patience%201
+- Bitcoin - [misc/bitcoin](misc/bitcoin)
+- Transformer - [misc/transformer](misc/transformer)
+- misc-show-your-patience-1 - [misc/patience 1](misc/patience%201)
 - misc-show-your-patience-2 - https://gist.github.com/myrdyr/952f170cf5d41403eca9a552110a8373
 
 
 
 ### web
 
-- TPC - https://github.com/Super-Guesser/ctf/blob/master/BalsnCTF2020/web/TPC/web_tpc.md
+- TPC - [web/TPC](web/TPC)
 
-- The Woven Web - https://github.com/Super-Guesser/ctf/blob/master/BalsnCTF2020/web/The%20Woven/the_woven_web.py
+- The Woven Web - [web/The Woven/the_woven_web.py](web/The%20Woven/the_woven_web.py)
 
-- L5D - https://github.com/Super-Guesser/ctf/tree/master/BalsnCTF2020/web/L5D
+- L5D - [web/L5D](web/L5D)
 - Windows XP Media Player - https://gist.github.com/wbowling/c32714967623aafe466a1928615390bc
 
 
 
 ### crypto
 
-- Happy farm - https://github.com/Super-Guesser/ctf/tree/master/BalsnCTF2020/crypto/happy%20farm
+- Happy farm - [crypto/happy%20farm](crypto/happy farm)
