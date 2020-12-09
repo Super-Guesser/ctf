@@ -1,27 +1,27 @@
 ## pbCTF 2020 Write ups
 
 ### pwn
-- Jheap - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/pwn/jheap
-- Pwnception - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/pwn/pwnception
-- Amazing ROP - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/pwn/Amazing-ROP
+- Jheap - [pwn/jheap](pwn/jheap)
+- Pwnception - [pwn/pwnception](pwn/pwnception)
+- Amazing ROP - [pwn/Amazing-ROP](pwn/Amazing-ROP)
 
 ### rev
-- RGNN - https://github.com/Super-Guesser/ctf/blob/master/pbctf%202020/rev/rgnn/README.md
+- RGNN - [rev/rgnn](rev/rgnn)
 
 ### misc
-- Vaccine Stealer - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/misc/vaccine_stealer
-- Not Stego - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/misc/not_stego
+- Vaccine Stealer - [misc/vaccine_stealer](misc/vaccine_stealer)
+- Not Stego - [misc/not_stego](misc/not_stego)
 - Find rbtree - https://rkm0959.tistory.com/174
-- Gcombo - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/misc/gcombo
+- Gcombo - [misc/gcombo](misc/gcombo)
 
 ### web
-- Ikea Name Generator - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/web/ikea-name-generator
-- XSP - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/web/XSP
-- Apoche I - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/web/apoche1
-- Simple Note - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/web/simple_note
-- Sploosh - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/web/sploosh
+- Ikea Name Generator - [web/ikea-name-generator](web/ikea-name-generator)
+- XSP - [web/XSP](web/XSP)
+- Apoche I - [web/apoche1](web/apoche1)
+- Simple Note - [web/simple_note](web/simple_note)
+- Sploosh - [web/sploosh](web/sploosh)
 
 ### crypto
-- Strong Cipher - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/crypto/strong_cipher
-- Ainissesthai - https://github.com/Super-Guesser/ctf/tree/master/pbctf%202020/crypto/ainissesthai
+- Strong Cipher - [crypto/strong_cipher](crypto/strong_cipher)
+- Ainissesthai - [crypto/ainissesthai](crypto/ainissesthai)
 - QueenSarah2, LeaK, Special Gift, Special Gift Revenge - https://rkm0959.tistory.com/174
