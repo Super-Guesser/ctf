@@ -8,4 +8,4 @@ We finally ranked in #5
 * Rank : #5  
 * CTF points : 16622.000  
   
-![rank.PNG](./imgs/rank.PNG)
+![rank.PNG](./static/rank.PNG)
