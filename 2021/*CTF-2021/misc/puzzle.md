@@ -12,7 +12,7 @@ By repeated usage of [Gaps](https://github.com/nemanja-m/gaps), we were able to 
 gaps --image=puzzle.png --generations=100 --population=600
 ```
 
-After failing with different approaches to **finish** the puzzle, final solution involved copy-pasting of recognized flag parts into the Googled
+After failing with different approaches to **finish** the puzzle, final solution involved copy-pasting of recognized flag parts (from partial solves) into the Googled
 original image which was used to write the flag to:
 
 ![](https://i.imgur.com/XUBK1O1.jpg)
