@@ -6,7 +6,7 @@
 
 ## Solution
 
-After installing hefty MATLAB Runtime, running the executable we are being presented with the Minesweeper game:
+After installing (required) MATLAB Runtime and running the executable, we are being presented with the Minesweeper game:
 
 ![](https://i.imgur.com/WIOyH07.png)
 
