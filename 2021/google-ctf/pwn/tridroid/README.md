@@ -289,7 +289,7 @@ So, in summary we need to call java showFlag method in MainActivity to get the f
 
 ![invokeJavaMethod](https://files.catbox.moe/kxzzu9.png)
 
-We still need to get jnienv and jobject pointers. This is where frida our arb r/w can come in handy. First, we can add a hook to `Java_com_google_ctf_pwn_tridroid_MainActivity_manageStack__Ljava_lang_String_2_3B` and log jnienv and jobj ptr.
+We still need to get jnienv and jobject pointers. This is where frida and our arb r/w can come in handy. First, we can add a hook to `Java_com_google_ctf_pwn_tridroid_MainActivity_manageStack__Ljava_lang_String_2_3B` and log jnienv and jobj ptr.
 ```js
 Interceptor.attach(Module.getExportByName('libtridroid.so', 'Java_com_google_ctf_pwn_tridroid_MainActivity_manageStack__Ljava_lang_String_2_3B'), {
     onEnter(args) {
@@ -298,7 +298,7 @@ Interceptor.attach(Module.getExportByName('libtridroid.so', 'Java_com_google_ctf
     },
 });
 ```
-Then we can use arb read to read stack content and find jnienv and jobj ptr.
+Then we can use arb read to read stack content and find jnienv and jobj ptr that we have from frida.
 ```js
 for (let i = -0x1000; i < 0x1000; i += 8) {
 	console.log(read(stack + BigInt(i));
