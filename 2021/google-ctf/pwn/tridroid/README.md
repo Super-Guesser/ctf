@@ -219,8 +219,10 @@ function write(addr, data) {
 ```
 
 Before using the arbitrary r/w, we need a leak first. We can use `modify` and `top` to leak some data from the stack because of `strcpy` copying data from stack directly to stack_top data in `modify_element`.
+
 ![modify leak](https://files.catbox.moe/doq9or.png)
-So what we do is by filling `var_38` until it reach just before canary.
+
+So what we need to do is fill `var_38` until it reach just before canary.
 ```
 [ var_38 (0x28 bytes) ][ canary ][ saved rbp ][ saved rip ]
 ```
@@ -418,4 +420,7 @@ payload += p64(lib_base + 0xfa0n)
 write(heap_n+0x2120n, payload) // modify_element bof
 ```
 
+Send the final payload and wait for the encrypted flag appears on the log. Write a decryptor for it. I used online compiler for this one, https://ideone.com/OBul4E.
+
+### Notes
 Final payloads are in solve.html, solve.js, and solve.py (to easily interact with challenge remotely and locally). hook.js are used to for frida hook.
