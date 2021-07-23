@@ -227,6 +227,9 @@ So what we need to do is fill `var_38` until it reach just before canary.
 [ var_38 (0x28 bytes) ][ canary ][ saved rbp ][ saved rip ]
 ```
 By doing that, we can get canary, rbp and, libtridroid address leaked because `strcpy` copied past our buffer. We can also do the same to get heap leak by filling 16 bytes of data. There's some catch to this though, since our stack data is too small (only 16 bytes) there's a chance we are overwriting some important data on the heap. To get around it, we can use arb r/w primitive to make our stack top use unused heap region. Here's updated code to get all the leak including libc leak from strcpy GOT table in libtridroid.
+
+If you are an avid ctf pwn player, you might be wondering why we can get the canary value when there is a null byte in canary. Apparently, this seems to be not the case on android bionic (android libc). Check out this link, [https://github.com/aosp-mirror/platform_bionic/blob/c44b1d0676ded732df4b3b21c5f798eacae93228/libc/bionic/__libc_init_main_thread.cpp#L113](https://github.com/aosp-mirror/platform_bionic/blob/c44b1d0676ded732df4b3b21c5f798eacae93228/libc/bionic/__libc_init_main_thread.cpp#L113), It's just a direct copy without any LSB bit cleared like the one in glibc [https://code.woboq.org/userspace/glibc/sysdeps/unix/sysv/linux/dl-osinfo.h.html#64](https://code.woboq.org/userspace/glibc/sysdeps/unix/sysv/linux/dl-osinfo.h.html#64).
+
 ```js
 stack_push("41414141414141414141414141414141"); // fill 16 bytes of stack data
 var leak = stack_top();
