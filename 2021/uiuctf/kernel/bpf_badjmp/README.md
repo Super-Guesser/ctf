@@ -1,4 +1,4 @@
-﻿# UIUCTF 2021: ebpf_badjmp solutions
+﻿# UIUCTF 2021: ebpf_badjmp solution
 Decription:
 >We recreated CVE-2016-2383. Your task is to read out the variable named  `uiuctf_flag`  in the kernel memory, by building an arbitrary kernel memory read via a malicious eBPF program. Use of provided starter code is optional; if you have better methods feel free to use them instead.
 >
