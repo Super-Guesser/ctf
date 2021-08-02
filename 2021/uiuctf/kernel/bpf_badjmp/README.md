@@ -508,7 +508,6 @@ int load_prog(uint64_t addr)
 		BPF_MAP_GET(0, BPF_REG_7),
 		BPF_MAP_GET_ADDR(0, BPF_REG_8),
 
-		// prepare argument for BPF_FUNC_map_lookup_elem
 		BPF_MAP_GET_ADDR(0, BPF_REG_5),
 
 		BPF_LD_IMM64_RAW(BPF_REG_0, 0, addr),
@@ -523,15 +522,16 @@ int load_prog(uint64_t addr)
 		BPF_MOV64_REG(BPF_REG_7, BPF_REG_7),
 		BPF_MOV64_REG(BPF_REG_7, BPF_REG_7),
 
+		BPF_ALU64_REG(BPF_ADD, BPF_REG_0, BPF_REG_7),
 		// expanded instruction here
-		BPF_ALU64_REG(BPF_ADD, BPF_REG_0, BPF_REG_7), /* BPF_MOV32_IMM(BPF_REG_AX, aux->alu_limit),
-																										 BPF_ALU64_REG(BPF_SUB, BPF_REG_AX, BPF_REG_7),
-																										 BPF_ALU64_REG(BPF_OR, BPF_REG_AX, BPF_REG_7),
-																										 BPF_ALU64_IMM(BPF_NEG, BPF_REG_AX, 0),
-																										 BPF_ALU64_IMM(BPF_ARSH, BPF_REG_AX, 63),
-																										 BPF_ALU64_REG(BPF_AND, BPF_REG_AX, BPF_REG_7),
-																										 BPF_ALU64_REG(BPF_ADD, BPF_REG_0, BPF_REG_AX),
-																										 */
+		// BPF_MOV32_IMM(BPF_REG_AX, aux->alu_limit),
+		// BPF_ALU64_REG(BPF_SUB, BPF_REG_AX, BPF_REG_7),
+		// BPF_ALU64_REG(BPF_OR, BPF_REG_AX, BPF_REG_7),
+		// BPF_ALU64_IMM(BPF_NEG, BPF_REG_AX, 0),
+		// BPF_ALU64_IMM(BPF_ARSH, BPF_REG_AX, 63),
+		// BPF_ALU64_REG(BPF_AND, BPF_REG_AX, BPF_REG_7),
+		// BPF_ALU64_REG(BPF_ADD, BPF_REG_0, BPF_REG_AX),
+		//
 		BPF_LDX_MEM(BPF_DW, BPF_REG_6, BPF_REG_0, 0x0),
 		BPF_STX_MEM(BPF_DW, BPF_REG_8, BPF_REG_6, 0x0),
 		BPF_LDX_MEM(BPF_DW, BPF_REG_6, BPF_REG_0, 0x8),
