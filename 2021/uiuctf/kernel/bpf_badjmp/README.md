@@ -237,7 +237,7 @@ Above instruction, will expanded to:
 		BPF_ALU64_REG(BPF_AND, BPF_REG_AX, BPF_REG_7);
 		BPF_ALU64_REG(BPF_ADD, BPF_REG_0, BPF_REG_AX),
 ```
-So, this one instruction will be patched with seven instruction (the `delta` will be 7)
+So, this one instruction will be patched with seven instruction.
 
 My idea is using this expanded instruction, i want to make this load arbitrary pointer (we want to take control over `BPF_REG_0` registers). This is what it looks like.
 ``` c
