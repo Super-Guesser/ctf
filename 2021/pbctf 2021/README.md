@@ -157,7 +157,7 @@ static void addFormVars(Webs *wp, char *vars)
 }
 ```
 
-If you read developer's comments in above codes, You might spot the bug. The suspicious thing is that the `addFormVars` function sets `sp->arg` to 0 ( `sp` is the return value of `websGetVar` which is a reference to the added key/value structure ), While this doesn't happen in the `processContentData` function.
+If you read developer's comments in above codes, You might spot the bug. The suspicious thing is that the `addFormVars` function sets `sp->arg` to 1 ( `sp` is the return value of `websGetVar` which is a reference to the added key/value structure ), While this doesn't happen in the `processContentData` function.
 
 Lets take a look at the env variables handler in `cgi.c` again.
 
