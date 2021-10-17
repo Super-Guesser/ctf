@@ -807,7 +807,7 @@ We then realized that if we pass unclosed HTML tag to this function, It produces
 }
 ```
 
-We can't pass unclosed HTML text to this method normally because it gets fixed before reaching there (that HTML structure fixing phase). However we can do it with using that bug in `removeReservedKeywords` function.
+We can't pass unclosed HTML text to this method normally because it gets fixed before reaching there (that HTML structure fixing phase). However we can do it using that bug in `removeReservedKeywords` function.
 
 ```
 <c<cke:encoded></cke:encoded>ke:encoded>%3Cimg src=1 onerror="alert()"</c<cke:encoded></cke:encoded>ke:encoded>
@@ -823,7 +823,7 @@ The following payload opens an iframe to example.com on all text editors.
 <iframe src="//example.org"></iframe><c<cke:encoded></cke:encoded>ke:encoded>%3Ciframe src="//example.com"
 ```
 
-Then you can open an iframe or redirect to froala or ckeditor with XSS payload in url in that iframe. This approach is apparently unintended.
+Then you can open an iframe or redirect to froala or ckeditor with XSS payload in the url. This approach is apparently unintended.
 
 ## In the End
 
