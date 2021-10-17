@@ -893,6 +893,6 @@ Clicking on google Logo took us to `https://google.com`
 
 We tried our exploit on the remote and we could get the flag with our first try ( we were limited to 3 tries ).  
 
-> Thank you zer0pts for solving it while the author was offline (The other admin didn't know that the server ip should be kept private). pb was kind enough to provide server address to us too because they have given it to zer0pts. The intended solution had a server address check bypass, So We had to exploit the mattermost desktop without having server address, I think finding that bypass within an hour was not easy. You can find the intended solution [here](https://gist.github.com/aadityapurani/92905581fb62249be0fdac6f11efe611).
+> Thank you zer0pts for solving it while the author was offline (The other admin didn't know that the server ip should be kept private). pb was kind enough to provide server address to us too because they have given it to zer0pts. The intended solution had a server address check bypass and i think finding that bypass within an hour was not easy. You can find the intended solution [here](https://gist.github.com/aadityapurani/92905581fb62249be0fdac6f11efe611).
 
   
