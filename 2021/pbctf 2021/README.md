@@ -21,7 +21,7 @@ Fortunately, We could find the vulnerablity quickly; Maybe out of luck or maybe 
 
 The following part of `cgiHandler` function determines environment variables of the cgi process.
 
-```c=
+```c
 // /src/cgi.c:171
 envpsize = 64;
 envp = walloc(envpsize * sizeof(char*));
@@ -54,7 +54,7 @@ if (wp->vars) {
 It iterates through `wp->vars` which seems to be key-value map, Then it does some filtering stuff on key, and then it appends it to envp variable which will be passed to execve as environment variable. 
 
 The only functions which add stuff to `wp->vars` are `websSetVar` and `websSetVarFmt` functions. `websSetVarFmt` function is just `websSetVar` with format string support. The `websSetVar` function appends variables to request's variables table which is our `wp->vars`. This map is used to store request headers, request variables and some other stuff like client's ip and used protocol. 
-```c=
+```c
 // WebsKey definition
 typedef struct WebsKey {
     struct WebsKey  *forw;                  /* Pointer to next hash list */
@@ -85,7 +85,7 @@ Cross references indicated that we can pass arbitrary name/value to `webSetVar` 
 
 - `processContentData` function which handles multipart POST bodies. 
 
-```c=
+```c
 // /src/upload.c:319
 static bool processContentData(Webs *wp){
     // ...
@@ -120,7 +120,7 @@ static bool processContentData(Webs *wp){
 
 - `addFormVars` function which is used to decode query parameters and POST bodies.
 
-```c=
+```c
 // /src/http.c:1409
 static void addFormVars(Webs *wp, char *vars)
 {
@@ -161,7 +161,7 @@ If you read developer's comments in above codes, You might spot the bug. The sus
 
 Lets take a look at the env variables handler in `cgi.c` again.
 
-```c=
+```c
 // /src/cgi.c:51
 PUBLIC bool cgiHandler(Webs *wp)
 {
@@ -213,7 +213,7 @@ The code looked safe to me while i was reviewing it. The bug is actually funny. 
 
 Spoiler: `c3RyaW0gcmV0dXJucyAwIGlmIHNldCBpcyAwLCB0aHVzIGZpbHRlciBicmVha3M=`
 
-```c=
+```c
 // /src/cgi.c:51
 PUBLIC bool cgiHandler(Webs *wp)
 {
@@ -287,7 +287,7 @@ PUBLIC bool sstarts(cchar *str, cchar *prefix)
 
 We then looked for temp files that goahead uses and discovered that goahead saves plain POST body in a file named `/tmp/cgi-${COUNTER}.tmp` and then it passes it as stdin to the cgi process.
 
-```c=
+```c
 PUBLIC char *websTempFile(cchar *dir, cchar *prefix)
 {
     static int count = 0;
@@ -358,7 +358,7 @@ object '/dev/stdin' from LD_PRELOAD cannot be preloaded (failed to map segment f
 
 Since we didn't have to spray anymore, we tried it on remote for fun and it worked lmao. remote's tmpfs was not acting weird! So spray would work too if we had tried it on remote.
 
-```py=
+```py
 #!/usr/bin/env python3
 from pwn import *
 import time
@@ -388,7 +388,7 @@ Content-Disposition: form-data; name="LD_PRELOAD"
 p.interactive()
 ```
 
-```c=
+```c
 /* compile: gcc -shared -o lol.so ./a.c -ldl */
 
 #include <stdlib.h>
@@ -427,7 +427,7 @@ We started with finding papers/blogs about sniffing browser history with css. We
 
 you can find paper about how this exploit works [here](https://github.com/onlyvae/Browser-History-Sniffing/blob/master/history_sniff_NDSS_.pdf). Basically the function which you pass to `requestAnimationFrame` as argument will be called when browser wants to create new frame. For example the following code should print a number close to the fps of your browser.
 
-```javascript=
+```javascript
 window.counter = 0;
 rid = -1;
 function d(){
@@ -443,7 +443,7 @@ But how can we use this to leak browser's history? Anchor tags have pseudo-class
 Basically the concept is that we force browser to do heavy css works for visited links. If we do this for many links, this will lead to fps drop. And we can distinguish visited and unvisited links. 
 
 > How paper explains this attack: an attacker repeatedly switches the address of a hyperlink element between a target URL and an unvisited URL over a fixed time window and records how many times the browser invokes the callback function in requestAnimationFrame(). This number equals approximately the number of frames rendered by browsers over this time. If this number is obviously lower than the value measured by toggling the address of the hyperlink element between two unvisited URLs, then the target URL is identified as a visited URL
-```htmlmixed=
+```html
 
 <!DOCTYPE html>
 <html>
@@ -606,7 +606,7 @@ if($want == "flag"){
 
 parsing the text starts from `/core/htmldataprocessor.js:53`. We call it filter function for example.
 
-```javascript=
+```javascript
 editor.on( 'toHtml', function( evt ) {
 	var evtData = evt.data,
 		data = evtData.dataValue,
@@ -703,7 +703,7 @@ editor.on( 'toHtml', function( evt ) {
 
 The `protectElements` function converts textareas to custom elements to avoid content being used in filtering process. Why? Because filter function first does some html processing with regexps lol. For example filter function should first replace or remove `on.*` attributes to prevent XSS in fixing HTML structure phase. To fix our given dirty HTML structure, This function first creates an element and then it puts our dirty HTML inside it and then it gets innerHTML of that element. 
 
-```js=
+```javascript
 // Protect on.* attributes
 
 // First it removes onerror= attributes with regexp
@@ -724,7 +724,7 @@ Now imagine if the above code wants to parse `<textarea><img src=1 onerror=alert
 
 We tried passing `<cke:encoded>%3Cimg%3E</cke:encoded>` directly to see what happens. It was getting removed. We then remembered `removeReservedKeywords` function.  
 
-```javascript=
+```javascript
 editor.on( 'toHtml', function( evt ) {
 	var evtData = evt.data,
 		data = evtData.dataValue,
@@ -754,7 +754,7 @@ editor.on( 'toHtml', function( evt ) {
 
 It was because of that `removeReservedKeywords` function. The function is long so here is part of the code.
 
-```js=
+```javascript
 function createEncodedKeywordRegex() {
 	return new RegExp( '(' +
 		// Create closed element regex i.e `<cke:encoded>xxx</cke:encoded>`.
@@ -782,7 +782,7 @@ We then tried`<c<cke:encoded></cke:encoded>ke:encoded>%3Cimg src=1 onerror=alert
 
 It was because there was another filtering phase in the codebase. We didn't look at that part. So we were wondering what to do, We then realized that the function which converts our HTML to object tree is not so smart! 
 
-```javascript=
+```javascript
 // Now use our parser to make further fixes to the structure, as
 // well as apply the filter.
 data = CKEDITOR.htmlParser.fragment.fromHtml( data, evtData.context, fixBodyTag );
@@ -790,7 +790,7 @@ data = CKEDITOR.htmlParser.fragment.fromHtml( data, evtData.context, fixBodyTag 
 
 The `CKEDITOR.htmlParser.fragment.fromHtml` method is at the end of our filtering function. It parses our HTML and generate a node tree. Something like the folowing object.
 
-```json
+```javascript
 {
     "attributes" : [], 
     "children" : [],
@@ -800,7 +800,7 @@ The `CKEDITOR.htmlParser.fragment.fromHtml` method is at the end of our filterin
 ```
 
 We then realized that if we pass unclosed HTML tag to this function, It produces a text node instead of HTML node. For example if we pass `<img src=1 onerror=alert()` it produces the following object.
-```json
+```javascript
 {
     "value" : "<img src=1 onerror=alert()"
     "type" : "text" // This is type of the node, in JS it's prototype of object not an attribute 
