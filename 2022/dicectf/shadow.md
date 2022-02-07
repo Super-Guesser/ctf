@@ -80,7 +80,7 @@ Focus using element id and hash `https://shadow.mc.ax/#vault`\
 Scroll to text fragment `https://shadow.mc.ax/#:~:text=steal%20me%20%3A)`\
 vault.click()\
 vault.focus()\
-And nothing worked now time is `23:44` and parrot found the way to focus on the element, again non-standard feature [window.find()](https://developer.mozilla.org/en-US/docs/Web/API/Window/find) `The Window.find() method finds a string in a window sequentially.` strangely find() worked on texts inside the shadow and automatically selects it, by running `find('steal me')` it will select the contents of the shadow now we can run execCommand on it.
+And nothing worked now time is `23:44` (16 minutes remaining) and parrot found the way to focus on the element, again non-standard feature [window.find()](https://developer.mozilla.org/en-US/docs/Web/API/Window/find) `The Window.find() method finds a string in a window sequentially.` strangely find() worked on texts inside the shadow and automatically selects it, by running `find('steal me')` it will select the contents of the shadow now we can run execCommand on it.
 
 **Rush minutes and panic**\
 Now only 10 minutes left and we have everything ready, we set style to `-webkit-user-modify:read-write` using `find('steal me')` select the shadow dom then finally with execCommand `document.execCommand('insertHTML',false,'<img src=1 onerror=console.log(this.parentElement.outerHTML)')>` we can get the secret but out of no where `this.parentElement` returned null `Cannot read properties of null (reading 'outerHTML')`
@@ -95,4 +95,5 @@ We missed sending the flag by 30 seconds which is the saddest thing to happen in
 `We also still have some unsolved but really awesome challenges, pwn/nightmare, pwn/road-to-failure, web/shadow. It would be awesome to see these challenges solved and to incentivize this we are offering $50 for the first solver of each challenge.`
 We just sent a message to the admins sent our solution and claimed the prize, if we were able to submit in time this reward wouldn't happen. sometimes you never know what is good for you.
 
-Thanks for reading
+Thanks for reading\
+[Renwa](https://twitter.com/RenwaX23) && [parrot](https://twitter.com/parrot409)
