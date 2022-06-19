@@ -157,4 +157,6 @@ And Execute the following payload on your browser about 10 seconds after clickin
     },100)
 ```
 
+Thanks to the justCTF organizers for the awesome CTF!
+
 > by renwa,as3617,parrot
