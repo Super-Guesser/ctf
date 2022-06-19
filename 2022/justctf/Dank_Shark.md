@@ -87,9 +87,13 @@ Header: header\r\n
 
 More details from the author:
 > The bug in the js_challange module is here:
+> 
 > https://github.com/simon987/ngx_http_js_challenge_module/blob/master/ngx_http_js_challenge.c#L240
+> 
 > there is a missing ngx_http_discard_request_body(r)
+> 
 > So this module doesn't clean the request body
+> 
 > It is only exploitable with specific nginx configuration (keepalive connection on proxy_pass)
 
 ## Third part - Chaining the bugs
